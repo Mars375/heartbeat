@@ -156,3 +156,386 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+/* ============================================================
+   Clerk dark theme overrides — Heartbeat emerald design system
+   ============================================================ */
+
+/* Blanket selector: reset all Clerk elements to dark base */
+.cl-rootBox,
+.cl-card,
+.cl-cardBox,
+.cl-signIn-root,
+.cl-signUp-root,
+.cl-userProfile-root,
+.cl-organizationProfile-root,
+.cl-createOrganization-root,
+.cl-userButton-root {
+  background: transparent;
+  color: #EDEDEF;
+}
+
+/* Card / page backgrounds */
+.cl-card {
+  background-color: #111113;
+  border: 1px solid rgba(38, 38, 42, 0.6);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.cl-page,
+.cl-pageScrollBox {
+  background-color: #0A0A0C;
+}
+
+/* Header */
+.cl-header {
+  background-color: #111113;
+  border-bottom: 1px solid rgba(38, 38, 42, 0.6);
+}
+
+.cl-headerTitle {
+  color: #EDEDEF;
+  font-weight: 600;
+}
+
+.cl-headerSubtitle {
+  color: #7E7E86;
+}
+
+/* Secondary / tertiary text */
+.cl-text,
+.cl-formFieldLabel,
+.cl-formFieldHintText,
+.cl-identityPreviewText,
+.cl-userPreviewTextContainer,
+.cl-accordionTriggerButton,
+.cl-profileSectionTitle,
+.cl-profileSectionTitleText {
+  color: #7E7E86;
+}
+
+.cl-formFieldLabel {
+  color: #EDEDEF;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Danger / error text */
+.cl-formFieldErrorText,
+.cl-alert[data-color="danger"] .cl-alertText,
+.cl-formResendCodeLink:disabled {
+  color: #FB7185;
+}
+
+/* Inputs */
+.cl-formFieldInput,
+.cl-input {
+  background-color: #1A1A1D;
+  border: 1px solid rgba(38, 38, 42, 0.6);
+  border-radius: 0.5rem;
+  color: #EDEDEF;
+  transition: border-color 150ms ease;
+}
+
+.cl-formFieldInput:focus,
+.cl-input:focus {
+  border-color: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  outline: none;
+}
+
+.cl-formFieldInput::placeholder,
+.cl-input::placeholder {
+  color: #7E7E86;
+}
+
+/* Primary action buttons */
+.cl-formButtonPrimary,
+.cl-button[data-variant="solid"] {
+  background-color: #10B981;
+  border: none;
+  border-radius: 0.5rem;
+  color: #0A0A0C;
+  font-weight: 600;
+  transition: background-color 150ms ease;
+}
+
+.cl-formButtonPrimary:hover,
+.cl-button[data-variant="solid"]:hover {
+  background-color: #34D399;
+}
+
+.cl-formButtonPrimary:focus-visible,
+.cl-button[data-variant="solid"]:focus-visible {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  outline: none;
+}
+
+/* Secondary / ghost buttons */
+.cl-formButtonReset,
+.cl-button[data-variant="ghost"],
+.cl-button[data-variant="outline"] {
+  background-color: transparent;
+  border: 1px solid rgba(38, 38, 42, 0.6);
+  border-radius: 0.5rem;
+  color: #EDEDEF;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.cl-formButtonReset:hover,
+.cl-button[data-variant="ghost"]:hover,
+.cl-button[data-variant="outline"]:hover {
+  background-color: #1A1A1D;
+  border-color: rgba(38, 38, 42, 1);
+}
+
+/* Nav / sidebar */
+.cl-navbarButton,
+.cl-navbarButtonIcon {
+  color: #7E7E86;
+  transition: color 150ms ease;
+}
+
+.cl-navbarButton:hover,
+.cl-navbarButton[data-active="true"] {
+  color: #EDEDEF;
+}
+
+.cl-navbarButton[data-active="true"] {
+  background-color: #1A1A1D;
+  border-radius: 0.375rem;
+}
+
+/* Badges */
+.cl-badge {
+  background-color: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 9999px;
+  color: #10B981;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Dividers */
+.cl-dividerLine {
+  background-color: rgba(38, 38, 42, 0.6);
+}
+
+.cl-dividerText {
+  color: #7E7E86;
+}
+
+/* Popovers / dropdowns */
+.cl-userButtonPopoverCard,
+.cl-popoverBox {
+  background-color: #111113;
+  border: 1px solid rgba(38, 38, 42, 0.6);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.cl-userButtonPopoverActionButton,
+.cl-popoverActionButton {
+  color: #7E7E86;
+  border-radius: 0.375rem;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.cl-userButtonPopoverActionButton:hover,
+.cl-popoverActionButton:hover {
+  background-color: #1A1A1D;
+  color: #EDEDEF;
+}
+
+.cl-userButtonPopoverActionButtonText {
+  color: inherit;
+}
+
+/* Avatars */
+.cl-avatarBox {
+  border: 2px solid rgba(38, 38, 42, 0.6);
+  border-radius: 9999px;
+}
+
+.cl-userPreviewAvatarBox {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* File upload */
+.cl-fileDropAreaBox {
+  background-color: #1A1A1D;
+  border: 2px dashed rgba(38, 38, 42, 0.6);
+  border-radius: 0.5rem;
+  color: #7E7E86;
+  transition: border-color 150ms ease;
+}
+
+.cl-fileDropAreaBox:hover {
+  border-color: #10B981;
+}
+
+/* Accordion */
+.cl-accordionTriggerButton {
+  background-color: transparent;
+  border-bottom: 1px solid rgba(38, 38, 42, 0.6);
+  color: #EDEDEF;
+}
+
+.cl-accordionContent {
+  background-color: #111113;
+}
+
+/* Modal / overlay */
+.cl-modalBackdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.cl-modalContent {
+  background-color: #111113;
+  border: 1px solid rgba(38, 38, 42, 0.6);
+  border-radius: 0.75rem;
+}
+
+/* Alerts */
+.cl-alert {
+  border-radius: 0.5rem;
+  border: 1px solid;
+}
+
+.cl-alert[data-color="warning"] {
+  background-color: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: #FBBF24;
+}
+
+.cl-alert[data-color="danger"] {
+  background-color: rgba(251, 113, 133, 0.1);
+  border-color: rgba(251, 113, 133, 0.3);
+  color: #FB7185;
+}
+
+.cl-alert[data-color="success"] {
+  background-color: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.3);
+  color: #34D399;
+}
+
+.cl-alert[data-color="neutral"] {
+  background-color: #1A1A1D;
+  border-color: rgba(38, 38, 42, 0.6);
+  color: #7E7E86;
+}
+
+/* Tables (profile sections) */
+.cl-profileSectionContent,
+.cl-profileSection {
+  border-bottom: 1px solid rgba(38, 38, 42, 0.6);
+}
+
+.cl-profileSectionPrimaryButton {
+  color: #10B981;
+  font-weight: 500;
+  transition: color 150ms ease;
+}
+
+.cl-profileSectionPrimaryButton:hover {
+  color: #34D399;
+}
+
+/* Scroll containers */
+.cl-scrollBox {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(38, 38, 42, 0.8) transparent;
+}
+
+.cl-scrollBox::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cl-scrollBox::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cl-scrollBox::-webkit-scrollbar-thumb {
+  background: rgba(38, 38, 42, 0.8);
+  border-radius: 3px;
+}
+
+.cl-scrollBox::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.4);
+}
+
+/* Social / OAuth provider buttons */
+.cl-socialButtonsBlockButton {
+  background-color: #1A1A1D;
+  border: 1px solid rgba(38, 38, 42, 0.6);
+  border-radius: 0.5rem;
+  color: #EDEDEF;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.cl-socialButtonsBlockButton:hover {
+  background-color: #111113;
+  border-color: rgba(38, 38, 42, 1);
+}
+
+.cl-socialButtonsBlockButtonText {
+  color: #EDEDEF;
+  font-weight: 500;
+}
+
+/* OTP / verification code input */
+.cl-otpCodeFieldInput {
+  background-color: #1A1A1D;
+  border: 1px solid rgba(38, 38, 42, 0.6);
+  border-radius: 0.5rem;
+  caret-color: #10B981;
+  color: #EDEDEF;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.cl-otpCodeFieldInput:focus {
+  border-color: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  outline: none;
+}
+
+/* Active/selected states */
+.cl-menuItem[data-active="true"],
+.cl-selectItem[data-active="true"] {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+}
+
+/* Clerk internal link styles */
+.cl-footerActionLink,
+.cl-formResendCodeLink {
+  color: #10B981;
+  transition: color 150ms ease;
+}
+
+.cl-footerActionLink:hover,
+.cl-formResendCodeLink:hover {
+  color: #34D399;
+}
+
+/* Footer */
+.cl-footer,
+.cl-footerPages {
+  background-color: #111113;
+  border-top: 1px solid rgba(38, 38, 42, 0.6);
+  color: #7E7E86;
+}
+
+.cl-footerPagesLink {
+  color: #7E7E86;
+  transition: color 150ms ease;
+}
+
+.cl-footerPagesLink:hover {
+  color: #EDEDEF;
+}
