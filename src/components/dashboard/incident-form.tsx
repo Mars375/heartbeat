@@ -69,7 +69,7 @@ export function IncidentForm({ monitors }: IncidentFormProps) {
           </div>
           <div className="space-y-2">
             <Label className="text-text-secondary">Severity</Label>
-            <Select value={severity} onValueChange={setSeverity}>
+            <Select value={severity} onValueChange={(value) => setSeverity(value ?? "minor")}>
               <SelectTrigger className="bg-bg-surface-2 border-border-default">
                 <SelectValue />
               </SelectTrigger>

@@ -34,20 +34,21 @@ export async function POST(req: NextRequest) {
         where: eq(organizations.stripeCustomerId, sub.customer as string),
       });
       if (org) {
+        const item = sub.items.data[0];
         await db.insert(subscriptions).values({
           orgId: org.id,
           stripeSubscriptionId: sub.id,
           status: sub.status as "active" | "canceled" | "past_due" | "trialing",
-          planId: sub.items.data[0].price.id,
-          currentPeriodStart: new Date(sub.current_period_start * 1000),
-          currentPeriodEnd: new Date(sub.current_period_end * 1000),
+          planId: item.price.id,
+          currentPeriodStart: new Date(item.current_period_start * 1000),
+          currentPeriodEnd: new Date(item.current_period_end * 1000),
         }).onConflictDoUpdate({
           target: subscriptions.stripeSubscriptionId,
           set: {
             status: sub.status as "active" | "canceled" | "past_due" | "trialing",
-            planId: sub.items.data[0].price.id,
-            currentPeriodStart: new Date(sub.current_period_start * 1000),
-            currentPeriodEnd: new Date(sub.current_period_end * 1000),
+            planId: item.price.id,
+            currentPeriodStart: new Date(item.current_period_start * 1000),
+            currentPeriodEnd: new Date(item.current_period_end * 1000),
           },
         });
       }

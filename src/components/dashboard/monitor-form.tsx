@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
 import { MONITOR_METHODS, PLAN_LIMITS, type PlanType } from "@/lib/constants";
 
@@ -44,11 +44,9 @@ export function MonitorForm({ plan, monitorCount, onSubmit }: MonitorFormProps) 
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button disabled={atLimit} className="bg-accent-primary hover:bg-accent-primary-hover text-bg-primary">
-          <Plus className="mr-2 h-4 w-4" /> Add Monitor
-        </Button>
-      </DialogTrigger>
+      <Button disabled={atLimit} onClick={() => setOpen(true)} className="bg-accent-primary hover:bg-accent-primary-hover text-bg-primary">
+        <Plus className="mr-2 h-4 w-4" /> Add Monitor
+      </Button>
       <DialogContent className="bg-bg-surface-1 border-border-default">
         <DialogHeader>
           <DialogTitle className="text-text-primary">New Monitor</DialogTitle>
