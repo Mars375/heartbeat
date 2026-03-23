@@ -39,9 +39,9 @@ export function Hero() {
                 Start for Free <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-            <Link href="/pricing">
+            <Link href="/s/demo">
               <Button size="lg" variant="outline" className="border-border-default text-text-secondary hover:text-text-primary">
-                See Pricing
+                Live Demo
               </Button>
             </Link>
           </div>
