@@ -1,18 +1,22 @@
 import { requireAuth } from "@/lib/auth";
-import { getStatusPages } from "@/lib/db/queries";
+import { getStatusPages, getMonitors } from "@/lib/db/queries";
 import { Topbar } from "@/components/dashboard/topbar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Globe, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { StatusPageFormWrapper } from "./status-page-form-wrapper";
 
 export default async function StatusPagesPage() {
   const { orgId } = await requireAuth();
-  const pages = await getStatusPages(orgId);
+  const [pages, monitorsList] = await Promise.all([getStatusPages(orgId), getMonitors(orgId)]);
+  const monitors = monitorsList.map((m) => ({ id: m.id, name: m.name }));
 
   return (
     <div>
-      <Topbar title="Status Pages" />
+      <Topbar title="Status Pages">
+        <StatusPageFormWrapper orgId={orgId} monitors={monitors} />
+      </Topbar>
       <div className="p-6 space-y-4">
         {pages.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">

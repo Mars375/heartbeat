@@ -23,6 +23,27 @@ export async function sendIncidentNotification(
   });
 }
 
+export async function sendMonitorDownAlert(
+  to: string[],
+  monitor: { name: string; url: string },
+  statusPageUrl: string
+) {
+  if (to.length === 0) return;
+  await resend.emails.send({
+    from: "Heartbeat <notifications@heartbeat.dev>",
+    to,
+    subject: `🔴 ${monitor.name} is down`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #FB7185;">Monitor Alert: ${monitor.name}</h2>
+        <p>Your monitor is currently <strong>down</strong>.</p>
+        <p><strong>URL:</strong> ${monitor.url}</p>
+        <p><a href="${statusPageUrl}" style="color: #10B981;">View Status Page →</a></p>
+      </div>
+    `,
+  });
+}
+
 export async function sendVerificationEmail(to: string, verifyUrl: string) {
   await resend.emails.send({
     from: "Heartbeat <notifications@heartbeat.dev>",

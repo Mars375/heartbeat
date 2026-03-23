@@ -196,3 +196,32 @@ export async function getSubscribers(statusPageId: string) {
   return db.select().from(subscribers)
     .where(and(eq(subscribers.statusPageId, statusPageId), eq(subscribers.verified, true)));
 }
+
+export async function getStatusPagesForMonitor(monitorId: string) {
+  return db.select({ statusPage: statusPages })
+    .from(statusPageMonitors)
+    .innerJoin(statusPages, eq(statusPageMonitors.statusPageId, statusPages.id))
+    .where(eq(statusPageMonitors.monitorId, monitorId))
+    .then((rows) => rows.map((r) => r.statusPage));
+}
+
+export async function addMonitorToStatusPage(statusPageId: string, monitorId: string, displayOrder = 0) {
+  await db.insert(statusPageMonitors).values({ statusPageId, monitorId, displayOrder })
+    .onConflictDoNothing();
+}
+
+export async function removeMonitorFromStatusPage(statusPageId: string, monitorId: string) {
+  await db.delete(statusPageMonitors)
+    .where(and(eq(statusPageMonitors.statusPageId, statusPageId), eq(statusPageMonitors.monitorId, monitorId)));
+}
+
+export async function getStatusPageWithMonitors(id: string, orgId: string) {
+  const page = await getStatusPageById(id, orgId);
+  if (!page) return null;
+  const pageMonitors = await db.select({ monitor: monitors })
+    .from(statusPageMonitors)
+    .innerJoin(monitors, eq(statusPageMonitors.monitorId, monitors.id))
+    .where(eq(statusPageMonitors.statusPageId, page.id))
+    .orderBy(statusPageMonitors.displayOrder);
+  return { page, monitors: pageMonitors.map((r) => r.monitor) };
+}
