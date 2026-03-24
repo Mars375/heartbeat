@@ -6,7 +6,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const manrope = Manrope({ subsets: ["latin"], variable: "--font-heading" });
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 
 export const metadata: Metadata = {
   title: "Heartbeat — Modern Status Pages",
