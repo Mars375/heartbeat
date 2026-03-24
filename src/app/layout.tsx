@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Manrope } from "next/font/google";
 import "./globals.css";
-import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-heading" });
 
 export const metadata: Metadata = {
   title: "Heartbeat — Modern Status Pages",
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
-      <html lang="en" className={cn("dark", "font-sans", geist.variable)}>
-        <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans`}>
+      <html lang="en" className={cn("dark", GeistSans.variable, GeistMono.variable, manrope.variable)}>
+        <body className="font-sans antialiased">
           {children}
         </body>
       </html>

@@ -16,11 +16,12 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className={cn(
-      "fixed top-0 z-50 w-full transition-all duration-300",
-      scrolled ? "bg-bg-primary/80 backdrop-blur-lg border-b border-border-default" : "bg-transparent"
-    )}>
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+    <nav className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+      <div className={cn(
+        "flex h-12 w-full max-w-3xl items-center justify-between rounded-full px-4 transition-all duration-300",
+        "bg-bg-surface-1/70 backdrop-blur-xl shadow-[0_0_0_1px_rgba(255,255,255,0.08)]",
+        scrolled && "shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.4)]"
+      )}>
         <Link href="/" className="flex items-center gap-2">
           <Heart className="h-5 w-5 text-accent-primary" fill="currentColor" />
           <span className="text-lg font-bold text-text-primary">Heartbeat</span>

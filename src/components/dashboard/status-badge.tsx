@@ -17,13 +17,18 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
   const config = statusConfig[status];
   return (
     <span className={cn("inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium", config.className, className)}>
-      <span className={cn("h-1.5 w-1.5 rounded-full", {
-        "bg-positive": status === "operational",
-        "bg-warning": status === "degraded",
-        "bg-negative": status === "down",
-        "bg-info": status === "maintenance",
-        "bg-text-secondary": status === "unknown",
-      })} />
+      <span className="relative flex h-1.5 w-1.5">
+        {status === "operational" && (
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-positive opacity-60" />
+        )}
+        <span className={cn("relative inline-flex h-1.5 w-1.5 rounded-full", {
+          "bg-positive": status === "operational",
+          "bg-warning": status === "degraded",
+          "bg-negative": status === "down",
+          "bg-info": status === "maintenance",
+          "bg-text-secondary": status === "unknown",
+        })} />
+      </span>
       {config.label}
     </span>
   );

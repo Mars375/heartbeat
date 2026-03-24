@@ -5,12 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono), monospace;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-heading: var(--font-heading), var(--font-geist-sans), ui-sans-serif, sans-serif;
 
-  --color-bg-primary: #0A0A0C;
-  --color-bg-surface-1: #111113;
-  --color-bg-surface-2: #1A1A1D;
+  --color-bg-primary: #0E0E10;
+  --color-bg-surface-1: #131315;
+  --color-bg-surface-2: #19191C;
+  --color-bg-surface-3: #1F1F22;
+  --color-bg-surface-4: #262528;
 
   --color-border-default: rgba(38, 38, 42, 0.6);
   --color-border-strong: rgba(38, 38, 42, 1);
@@ -110,9 +113,11 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    background-color: #0E0E10;
   }
-  html {
-    @apply font-sans;
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.03em;
   }
 }
 
