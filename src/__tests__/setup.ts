@@ -38,7 +38,7 @@ vi.mock("framer-motion", () => ({
   motion: new Proxy({} as Record<string, React.FC<Record<string, unknown>>>, {
     get: (_target, prop: string) => {
       return ({ children, ...props }: { children?: React.ReactNode; [key: string]: unknown }) => {
-        const tag = prop as keyof JSX.IntrinsicElements;
+        const tag = prop as keyof React.JSX.IntrinsicElements;
         const { createElement } = require("react");
         const filteredProps: Record<string, unknown> = {};
         for (const [key, value] of Object.entries(props)) {

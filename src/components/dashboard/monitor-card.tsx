@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { StatusBadge } from "./status-badge";
 import { UptimeBar } from "./uptime-bar";
-import { formatMs, formatRelativeTime } from "@/lib/utils";
+import { cn, formatMs, formatRelativeTime } from "@/lib/utils";
 
 interface MonitorCardProps {
   monitor: {
@@ -20,9 +20,15 @@ interface MonitorCardProps {
 }
 
 export function MonitorCard({ monitor, uptimeData }: MonitorCardProps) {
+  const isOperational = monitor.lastStatus === "operational";
   return (
     <Link href={`/monitors/${monitor.id}`}>
-      <Card className="border-border-default bg-bg-surface-1 transition-colors hover:border-border-strong">
+      <Card className={cn(
+        "border-transparent bg-bg-surface-2 transition-all duration-200 hover:bg-bg-surface-3",
+        isOperational
+          ? "shadow-[0_0_0_1px_rgba(16,185,129,0.15),0_0_16px_rgba(16,185,129,0.06)]"
+          : "shadow-[0_0_0_1px_rgba(255,255,255,0.06)]"
+      )}>
         <CardContent className="p-5 space-y-3">
           <div className="flex items-center justify-between">
             <div>

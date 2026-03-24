@@ -25,11 +25,11 @@ export function UptimeBar({ checks, className }: UptimeBarProps) {
           {checks.map((check, i) => (
             <Tooltip key={i}>
               <TooltipTrigger
-                className={cn("h-8 flex-1 rounded-[2px] transition-opacity hover:opacity-80", {
-                  "bg-positive": check.status === "up",
+                className={cn("h-6 flex-1 rounded-[3px] transition-all hover:opacity-90 hover:scale-y-110 origin-bottom", {
+                  "bg-positive shadow-[0_0_4px_rgba(52,211,153,0.3)]": check.status === "up",
                   "bg-negative": check.status === "down",
                   "bg-warning": check.status === "degraded",
-                  "bg-border-default": check.status === "no_data",
+                  "bg-bg-surface-3": check.status === "no_data",
                 })}
                 data-segment
               />
