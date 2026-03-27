@@ -18,8 +18,8 @@ export function ResponseTimeChart({ data }: ResponseTimeChartProps) {
         <AreaChart data={data}>
           <defs>
             <linearGradient id="responseGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#10B981" stopOpacity={0.3} />
-              <stop offset="100%" stopColor="#10B981" stopOpacity={0} />
+              <stop offset="0%" stopColor="#e9c176" stopOpacity={0.3} />
+              <stop offset="100%" stopColor="#e9c176" stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(38,38,42,0.4)" />
@@ -28,7 +28,7 @@ export function ResponseTimeChart({ data }: ResponseTimeChartProps) {
           <Tooltip
             contentStyle={{ backgroundColor: "#1A1A1D", border: "1px solid rgba(38,38,42,0.6)", borderRadius: 8, color: "#EDEDEF" }}
           />
-          <Area type="monotone" dataKey="responseTime" stroke="#10B981" fill="url(#responseGradient)" strokeWidth={2} />
+          <Area type="monotone" dataKey="responseTime" stroke="#e9c176" fill="url(#responseGradient)" strokeWidth={2} />
         </AreaChart>
       </ResponsiveContainer>
     </div>

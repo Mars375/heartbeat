@@ -18,8 +18,8 @@ export function Sidebar() {
   return (
     <aside className="flex h-full w-60 flex-col bg-bg-surface-1/80 backdrop-blur-xl border-r border-white/[0.06]">
       <div className="flex h-14 items-center gap-2.5 px-5">
-        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent-primary/15 ring-1 ring-accent-primary/30">
-          <Heart className="h-3.5 w-3.5 text-accent-primary" fill="currentColor" />
+        <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-[#e9c176]/15 ring-1 ring-[#e9c176]/30">
+          <Heart className="h-3.5 w-3.5 text-[#e9c176]" fill="currentColor" />
         </div>
         <span className="text-sm font-semibold text-text-primary tracking-tight">Heartbeat</span>
       </div>
@@ -34,11 +34,11 @@ export function Sidebar() {
               className={cn(
                 "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-150",
                 isActive
-                  ? "bg-accent-primary/10 text-accent-primary font-medium shadow-[inset_2px_0_0_0_#10B981]"
+                  ? "bg-[#e9c176]/10 text-[#e9c176] font-medium shadow-[inset_2px_0_0_0_#e9c176]"
                   : "text-text-secondary hover:text-text-primary hover:bg-bg-surface-2"
               )}
             >
-              <Icon className={cn("h-4 w-4 transition-colors", isActive ? "text-accent-primary" : "text-text-tertiary group-hover:text-text-secondary")} />
+              <Icon className={cn("h-4 w-4 transition-colors", isActive ? "text-[#e9c176]" : "text-text-tertiary group-hover:text-text-secondary")} />
               {label}
             </Link>
           );

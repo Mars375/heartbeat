@@ -20,16 +20,16 @@ export function StatusHeader({ name, logoUrl, brandingColor, overallStatus }: St
         ) : (
           <Heart className="h-6 w-6" style={{ color: brandingColor }} fill="currentColor" />
         )}
-        <h1 className="text-2xl font-bold text-text-primary">{name}</h1>
+        <h1 className="font-headline text-2xl text-[#ededef] tracking-tight">{name}</h1>
       </div>
       <div
         className={cn(
-          "rounded-xl p-4 text-center text-lg font-semibold",
-          overallStatus === "operational" && "bg-positive/10 text-positive",
-          overallStatus === "degraded" && "bg-warning/10 text-warning",
-          overallStatus === "down" && "bg-negative/10 text-negative",
-          overallStatus === "maintenance" && "bg-info/10 text-info",
-          overallStatus === "unknown" && "bg-text-secondary/10 text-text-secondary"
+          "rounded-sm p-4 text-center text-sm font-body font-semibold tracking-widest uppercase border",
+          overallStatus === "operational" && "bg-positive/8 text-positive border-positive/20",
+          overallStatus === "degraded" && "bg-warning/8 text-warning border-warning/20",
+          overallStatus === "down" && "bg-negative/8 text-negative border-negative/20",
+          overallStatus === "maintenance" && "bg-info/8 text-info border-info/20",
+          overallStatus === "unknown" && "bg-[#353534]/30 text-[#9a9895] border-[#353534]/40"
         )}
       >
         {label}

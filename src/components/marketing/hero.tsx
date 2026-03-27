@@ -1,68 +1,85 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Activity, Shield, Bell } from "lucide-react";
 import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-32 pb-20">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.08),transparent_70%)]" />
-      <div className="relative mx-auto max-w-4xl px-6 text-center">
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-center pt-24 pb-20 px-6 md:px-12 overflow-hidden">
+      {/* Royal scrim background */}
+      <div className="absolute inset-0 royal-scrim opacity-60" />
+      <div className="absolute inset-0 bg-[#131313]" style={{ zIndex: -1 }} />
+
+      <div className="relative z-10 max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
+          transition={{ duration: 0.7 }}
+          className="space-y-8"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-accent-primary/30 bg-accent-glow px-4 py-1.5 text-sm text-accent-primary">
-            <Activity className="h-3.5 w-3.5" />
-            Modern uptime monitoring
-          </div>
-
-          <h1 className="text-5xl font-bold tracking-tight text-text-primary sm:text-6xl">
-            Know when your services{" "}
-            <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #10B981, #34D399)" }}>
-              go down
-            </span>
-          </h1>
-
-          <p className="mx-auto max-w-2xl text-lg text-text-secondary">
-            Monitor uptime, manage incidents, and share beautiful status pages with your users.
-            Get notified before your customers notice.
+          {/* Eyebrow */}
+          <p className="font-body text-[#e9c176] tracking-[0.5rem] uppercase text-xs">
+            Uptime Intelligence
           </p>
 
-          <div className="flex items-center justify-center gap-4">
+          {/* Headline */}
+          <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight text-[#ededef]">
+            Know When Your<br />
+            Services{" "}
+            <em className="not-italic italic text-[#cbbeff]">Break.</em>
+          </h1>
+
+          {/* Subheading */}
+          <p className="mx-auto max-w-xl text-base md:text-lg text-[#9a9895] leading-relaxed font-body">
+            Monitor uptime, manage incidents, and share status pages that inspire trust.
+            Get alerted before your customers do.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex items-center justify-center gap-4 pt-2">
             <Link href="/sign-up">
-              <Button size="lg" className="bg-accent-primary hover:bg-accent-primary-hover text-bg-primary">
-                Start for Free <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <button className="bg-[#e9c176] text-[#1a1400] px-8 py-3 rounded-sm font-body text-xs tracking-[0.15rem] uppercase font-bold hover:bg-[#f0d08a] transition-colors">
+                Start Monitoring
+              </button>
             </Link>
             <Link href="/s/demo">
-              <Button size="lg" variant="outline" className="border-border-default text-text-secondary hover:text-text-primary">
+              <button className="border border-[#353534] text-[#9a9895] px-8 py-3 rounded-sm font-body text-xs tracking-[0.15rem] uppercase font-bold hover:text-[#ededef] hover:border-[#9a9895]/40 transition-colors">
                 Live Demo
-              </Button>
+              </button>
             </Link>
           </div>
         </motion.div>
 
+        {/* Dashboard preview glow wrapper */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-16 flex justify-center gap-12 text-center"
+          transition={{ duration: 0.9, delay: 0.4 }}
+          className="relative mt-20 mx-auto max-w-4xl"
         >
-          {[
-            { icon: Activity, label: "99.9% Uptime Tracking" },
-            { icon: Shield, label: "Secure by Default" },
-            { icon: Bell, label: "Instant Alerts" },
-          ].map(({ icon: Icon, label }) => (
-            <div key={label} className="flex flex-col items-center gap-2">
-              <Icon className="h-5 w-5 text-accent-primary" />
-              <span className="text-sm text-text-secondary">{label}</span>
+          <div className="absolute -inset-4 rounded-sm bg-gradient-to-b from-[#cbbeff]/10 via-[#e9c176]/10 to-transparent blur-2xl" />
+          <div className="relative rounded-sm border border-[#353534]/60 bg-[#131313] overflow-hidden">
+            {/* Minimal mock dashboard */}
+            <div className="border-b border-[#353534]/60 px-6 py-3 flex items-center gap-3">
+              <span className="font-headline text-sm tracking-widest text-[#e9c176] uppercase">Heartbeat</span>
+              <span className="ml-auto text-xs text-[#6b6967] font-body tracking-widest uppercase">Dashboard</span>
             </div>
-          ))}
+            <div className="p-6 space-y-3">
+              {[
+                { name: "api.heartbeat.app", status: "operational", uptime: "99.98%" },
+                { name: "app.heartbeat.app", status: "operational", uptime: "100%" },
+                { name: "webhooks.heartbeat.app", status: "degraded", uptime: "99.1%" },
+              ].map((monitor) => (
+                <div key={monitor.name} className="flex items-center justify-between py-3 border-b border-[#353534]/30 last:border-0">
+                  <div className="flex items-center gap-3">
+                    <span className={`h-1.5 w-1.5 rounded-full ${monitor.status === "operational" ? "bg-[#34D399]" : "bg-[#FBBF24]"}`} />
+                    <span className="text-sm text-[#ededef] font-body">{monitor.name}</span>
+                  </div>
+                  <span className="text-xs text-[#9a9895] font-body tabular-nums">{monitor.uptime}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

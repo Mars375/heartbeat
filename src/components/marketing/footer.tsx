@@ -1,17 +1,15 @@
-import { Heart } from "lucide-react";
 import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border-default bg-bg-primary py-8">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
-        <div className="flex items-center gap-2 text-text-secondary">
-          <Heart className="h-4 w-4 text-accent-primary" fill="currentColor" />
-          <span className="text-sm">Heartbeat</span>
-        </div>
-        <div className="flex gap-6 text-sm text-text-tertiary">
-          <Link href="/pricing" className="hover:text-text-primary transition-colors">Pricing</Link>
-          <Link href="/sign-in" className="hover:text-text-primary transition-colors">Sign in</Link>
+    <footer className="border-t border-[#353534]/30 bg-[#0e0e0e] py-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 md:px-12">
+        <span className="font-headline text-sm tracking-widest text-[#e9c176] uppercase">
+          Heartbeat
+        </span>
+        <div className="flex gap-8 text-[10px] text-[#6b6967] tracking-widest uppercase font-body">
+          <Link href="/pricing" className="hover:text-[#9a9895] transition-colors">Pricing</Link>
+          <Link href="/sign-in" className="hover:text-[#9a9895] transition-colors">Sign In</Link>
         </div>
       </div>
     </footer>
