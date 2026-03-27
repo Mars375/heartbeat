@@ -7,10 +7,10 @@ export function Footer() {
         <span className="font-headline text-sm tracking-widest text-[#e9c176] uppercase">
           Heartbeat
         </span>
-        <div className="flex gap-8 text-[10px] text-[#6b6967] tracking-widest uppercase font-body">
+        <nav aria-label="Footer navigation" className="flex gap-8 text-[10px] text-[#6b6967] tracking-widest uppercase font-body">
           <Link href="/pricing" className="hover:text-[#9a9895] transition-colors">Pricing</Link>
           <Link href="/sign-in" className="hover:text-[#9a9895] transition-colors">Sign In</Link>
-        </div>
+        </nav>
       </div>
     </footer>
   );

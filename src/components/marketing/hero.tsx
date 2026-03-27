@@ -6,9 +6,9 @@ import Link from "next/link";
 export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center pt-24 pb-20 px-6 md:px-12 overflow-hidden">
-      {/* Royal scrim background */}
-      <div className="absolute inset-0 royal-scrim opacity-60" />
-      <div className="absolute inset-0 bg-[#131313]" style={{ zIndex: -1 }} />
+      {/* Royal scrim layered on base surface */}
+      <div className="absolute inset-0 z-0 bg-[#131313]" />
+      <div className="absolute inset-0 z-0 royal-scrim opacity-60" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
         <motion.div
@@ -26,7 +26,7 @@ export function Hero() {
           <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight text-[#ededef]">
             Know When Your<br />
             Services{" "}
-            <em className="not-italic italic text-[#cbbeff]">Break.</em>
+            <em className="text-[#cbbeff]">Break.</em>
           </h1>
 
           {/* Subheading */}
@@ -37,15 +37,17 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex items-center justify-center gap-4 pt-2">
-            <Link href="/sign-up">
-              <button className="bg-[#e9c176] text-[#1a1400] px-8 py-3 rounded-sm font-body text-xs tracking-[0.15rem] uppercase font-bold hover:bg-[#f0d08a] transition-colors">
-                Start Monitoring
-              </button>
+            <Link
+              href="/sign-up"
+              className="bg-[#e9c176] text-[#1a1400] px-8 py-3 rounded-sm font-body text-xs tracking-[0.15rem] uppercase font-bold hover:bg-[#f0d08a] transition-colors"
+            >
+              Start Monitoring
             </Link>
-            <Link href="/s/demo">
-              <button className="border border-[#353534] text-[#9a9895] px-8 py-3 rounded-sm font-body text-xs tracking-[0.15rem] uppercase font-bold hover:text-[#ededef] hover:border-[#9a9895]/40 transition-colors">
-                Live Demo
-              </button>
+            <Link
+              href="/s/demo"
+              className="border border-[#353534] text-[#9a9895] px-8 py-3 rounded-sm font-body text-xs tracking-[0.15rem] uppercase font-bold hover:text-[#ededef] hover:border-[#9a9895]/40 transition-colors"
+            >
+              Live Demo
             </Link>
           </div>
         </motion.div>
@@ -72,7 +74,7 @@ export function Hero() {
               ].map((monitor) => (
                 <div key={monitor.name} className="flex items-center justify-between py-3 border-b border-[#353534]/30 last:border-0">
                   <div className="flex items-center gap-3">
-                    <span className={`h-1.5 w-1.5 rounded-full ${monitor.status === "operational" ? "bg-[#34D399]" : "bg-[#FBBF24]"}`} />
+                    <span className={`h-1.5 w-1.5 rounded-full ${monitor.status === "operational" ? "bg-positive" : "bg-warning"}`} />
                     <span className="text-sm text-[#ededef] font-body">{monitor.name}</span>
                   </div>
                   <span className="text-xs text-[#9a9895] font-body tabular-nums">{monitor.uptime}</span>

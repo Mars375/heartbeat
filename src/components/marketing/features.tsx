@@ -69,7 +69,7 @@ export function Features() {
         {/* Tight 3-card asymmetric grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#353534]/20">
           {features.map((feature, i) => {
-            const isMiddleRow = i === 1 || i === 4;
+            const isMiddleColumn = i === 1 || i === 4;
             return (
               <motion.div
                 key={feature.title}
@@ -78,7 +78,7 @@ export function Features() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 className={`bg-[#131313] p-10 md:p-12 flex flex-col gap-5 ${
-                  isMiddleRow ? "md:-mt-8 border-x border-[#353534]/20" : ""
+                  isMiddleColumn ? "md:-mt-8 md:border-x border-[#353534]/20" : ""
                 }`}
               >
                 <feature.icon className="h-6 w-6 text-[#e9c176]" strokeWidth={1.5} />

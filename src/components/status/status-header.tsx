@@ -1,6 +1,5 @@
 import { Heart } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { getStatusLabel } from "@/lib/utils";
+import { cn, getStatusLabel } from "@/lib/utils";
 
 interface StatusHeaderProps {
   name: string;
@@ -25,7 +24,7 @@ export function StatusHeader({ name, logoUrl, brandingColor, overallStatus }: St
       <div
         className={cn(
           "rounded-sm p-4 text-center text-sm font-body font-semibold tracking-widest uppercase border",
-          overallStatus === "operational" && "bg-positive/8 text-positive border-positive/20",
+          overallStatus === "operational" && "bg-positive/10 text-positive border-positive/20",
           overallStatus === "degraded" && "bg-warning/8 text-warning border-warning/20",
           overallStatus === "down" && "bg-negative/8 text-negative border-negative/20",
           overallStatus === "maintenance" && "bg-info/8 text-info border-info/20",

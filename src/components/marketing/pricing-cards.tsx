@@ -89,15 +89,16 @@ export function PricingCards() {
               </ul>
 
               {/* CTA */}
-              <Link href="/sign-up" className="block">
-                <button className={cn(
-                  "w-full py-3 rounded-sm text-xs font-bold tracking-[0.15rem] uppercase font-body transition-colors",
+              <Link
+                href="/sign-up"
+                className={cn(
+                  "block w-full py-3 rounded-sm text-xs font-bold tracking-[0.15rem] uppercase font-body transition-colors text-center",
                   plan.popular
                     ? "bg-[#e9c176] text-[#1a1400] hover:bg-[#f0d08a]"
                     : "border border-[#353534] text-[#9a9895] hover:text-[#ededef] hover:border-[#9a9895]/40"
-                )}>
-                  {plan.cta}
-                </button>
+                )}
+              >
+                {plan.cta}
               </Link>
             </motion.div>
           ))}
