@@ -26,7 +26,7 @@ export function MonitorCard({ monitor, uptimeData }: MonitorCardProps) {
       <Card className={cn(
         "border-transparent bg-bg-surface-2 transition-all duration-200 hover:bg-bg-surface-3",
         isOperational
-          ? "shadow-[0_0_0_1px_rgba(16,185,129,0.15),0_0_16px_rgba(16,185,129,0.06)]"
+          ? "shadow-[0_0_0_1px_rgba(233,193,118,0.15),0_0_16px_rgba(233,193,118,0.06)]"
           : "shadow-[0_0_0_1px_rgba(255,255,255,0.06)]"
       )}>
         <CardContent className="p-5 space-y-3">
