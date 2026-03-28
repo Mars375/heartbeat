@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Heartbeat
+
+> Uptime monitoring and status pages — self-hosted or deployed to Vercel in one click.
+
+Monitor your services, track incidents, and publish a public status page. Built as a clean, modern alternative to paid uptime tools.
+
+## Features
+
+- **Monitors** — HTTP checks with configurable intervals and alerting
+- **Incidents** — Create, track, and resolve incidents with a full timeline
+- **Status Pages** — Public-facing pages per service at `/s/[slug]`
+- **Auth** — Clerk (email, OAuth, SSO)
+- **Payments** — Stripe checkout + billing portal
+
+## Stack
+
+| Layer | Tech |
+|---|---|
+| Framework | Next.js (App Router) |
+| Auth | Clerk |
+| Database | Neon Postgres + Drizzle ORM |
+| Cache / Queue | Upstash Redis |
+| Payments | Stripe |
+| UI | Base UI + Radix UI, Tailwind CSS, Framer Motion |
+| Font | Geist |
+| Tests | Vitest |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/heartbeat.git
+cd heartbeat
+npm install
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Fill in `.env.local`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+# Clerk
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Neon
+DATABASE_URL=
 
-## Learn More
+# Upstash Redis
+UPSTASH_REDIS_REST_URL=
+UPSTASH_REDIS_REST_TOKEN=
 
-To learn more about Next.js, take a look at the following resources:
+# Stripe
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Push the schema and start dev:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npx drizzle-kit push
+npm run dev
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/app/
+├── (dashboard)/
+│   ├── monitors/        # Monitor management
+│   ├── incidents/       # Incident tracker
+│   ├── status-pages/    # Status page builder
+│   └── settings/
+├── (marketing)/         # Landing page + pricing
+└── s/[slug]/            # Public status pages
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tests
+
+```bash
+npm run test
+```
