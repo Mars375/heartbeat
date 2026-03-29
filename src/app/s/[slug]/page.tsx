@@ -32,8 +32,8 @@ export default async function PublicStatusPage({ params }: { params: Promise<{ s
   );
 
   return (
-    <div className="min-h-screen bg-bg-primary">
-      <div className="mx-auto max-w-3xl px-4 py-12 space-y-8">
+    <div className="min-h-screen bg-[#131313]">
+      <div className="mx-auto max-w-3xl px-4 py-16 space-y-10">
         <StatusHeader
           name={page.name}
           logoUrl={page.logoUrl}
@@ -41,7 +41,7 @@ export default async function PublicStatusPage({ params }: { params: Promise<{ s
           overallStatus={overallStatus}
         />
 
-        <div className="space-y-3">
+        <div className="rounded-sm border border-[#353534]/40 bg-[#201f1f] p-6">
           {monitorsWithUptime.map(({ monitor, uptimeData }) => (
             <MonitorRow
               key={monitor.id}
@@ -54,24 +54,24 @@ export default async function PublicStatusPage({ params }: { params: Promise<{ s
 
         {activeIncidents.length > 0 && (
           <div className="space-y-3">
-            <h2 className="text-lg font-semibold text-text-primary">Active Incidents</h2>
+            <h2 className="font-headline text-lg text-[#ededef]">Active Incidents</h2>
             {activeIncidents.map((incident) => (
-              <div key={incident.id} className="rounded-lg border border-negative/30 bg-negative/5 p-4">
-                <h3 className="font-medium text-text-primary">{incident.title}</h3>
-                <p className="text-sm text-text-secondary capitalize">{incident.severity} - {incident.status}</p>
+              <div key={incident.id} className="rounded-sm border border-negative/30 bg-negative/5 p-4">
+                <h3 className="font-body font-medium text-[#ededef]">{incident.title}</h3>
+                <p className="text-sm text-[#9a9895] font-body capitalize">{incident.severity} — {incident.status}</p>
               </div>
             ))}
           </div>
         )}
 
-        <div className="rounded-lg border border-border-default bg-bg-surface-1 p-6 space-y-3">
-          <h2 className="text-lg font-semibold text-text-primary text-center">Subscribe to Updates</h2>
-          <p className="text-sm text-text-secondary text-center">Get notified when something goes wrong.</p>
+        <div className="rounded-sm border border-[#353534]/40 bg-[#201f1f] p-6 space-y-3">
+          <h2 className="font-headline text-base text-[#ededef] text-center">Subscribe to Updates</h2>
+          <p className="text-sm text-[#9a9895] font-body text-center">Get notified when something goes wrong.</p>
           <SubscribeForm slug={slug} />
         </div>
 
-        <footer className="text-center text-xs text-text-tertiary">
-          Powered by <span className="text-accent-primary font-medium">Heartbeat</span>
+        <footer className="text-center text-xs text-[#6b6967] font-body tracking-widest uppercase">
+          Powered by <span className="text-[#e9c176]">Heartbeat</span>
         </footer>
       </div>
     </div>

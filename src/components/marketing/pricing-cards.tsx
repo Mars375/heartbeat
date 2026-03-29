@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -38,55 +36,74 @@ const plans = [
 
 export function PricingCards() {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 max-w-5xl mx-auto">
-      {plans.map((plan, i) => (
-        <motion.div
-          key={plan.name}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1 }}
-        >
-          <Card className={cn(
-            "border-border-default bg-bg-surface-1 h-full flex flex-col",
-            plan.popular && "border-accent-primary/50 ring-1 ring-accent-primary/20"
-          )}>
-            {plan.popular && (
-              <div className="bg-accent-primary text-bg-primary text-center text-xs font-bold py-1 rounded-t-lg">
-                MOST POPULAR
+    <section className="py-32 md:py-48 px-6 md:px-12 bg-[#0e0e0e]">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="font-headline text-4xl md:text-5xl text-[#ededef] mb-4">Select Your Tier</h2>
+          <div className="h-px w-24 bg-[#e9c176] mx-auto opacity-30" />
+        </div>
+
+        <div className="grid grid-cols-1 gap-px md:grid-cols-3 bg-[#353534]/20">
+          {plans.map((plan, i) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className={cn(
+                "flex flex-col bg-[#131313] p-8 md:p-10",
+                plan.popular && "md:scale-105 md:shadow-2xl md:z-10 md:border-x border-[#e9c176]/20 bg-[#201f1f]"
+              )}
+            >
+              {/* Popular badge */}
+              {plan.popular && (
+                <div className="inline-flex self-start mb-5">
+                  <span className="bg-[#e9c176] text-[#1a1400] text-[10px] font-bold tracking-[0.2rem] uppercase px-3 py-1 rounded-sm">
+                    Most Coveted
+                  </span>
+                </div>
+              )}
+
+              {/* Plan name & description */}
+              <div className="mb-6">
+                <h3 className="font-headline text-xl text-[#ededef] mb-1">{plan.name}</h3>
+                <p className="text-xs text-[#9a9895] font-body tracking-wide">{plan.description}</p>
               </div>
-            )}
-            <CardHeader>
-              <CardTitle className="text-text-primary">{plan.name}</CardTitle>
-              <p className="text-text-secondary text-sm">{plan.description}</p>
-              <div className="pt-2">
-                <span className="text-4xl font-bold text-text-primary">{plan.price}</span>
-                {plan.period && <span className="text-text-secondary">{plan.period}</span>}
+
+              {/* Price */}
+              <div className="mb-8">
+                <span className="font-headline text-4xl text-[#ededef]">{plan.price}</span>
+                {plan.period && <span className="text-[#9a9895] font-body text-sm">{plan.period}</span>}
               </div>
-            </CardHeader>
-            <CardContent className="flex-1 flex flex-col justify-between">
-              <ul className="space-y-2 mb-6">
+
+              {/* Features */}
+              <ul className="space-y-3 mb-8 flex-1">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-sm text-text-secondary">
-                    <Check className="h-4 w-4 text-accent-primary shrink-0" />
+                  <li key={feature} className="flex items-center gap-3 text-sm text-[#9a9895] font-body">
+                    <Check className="h-3.5 w-3.5 text-[#e9c176] shrink-0" strokeWidth={2.5} />
                     {feature}
                   </li>
                 ))}
               </ul>
-              <Link href="/sign-up">
-                <Button className={cn(
-                  "w-full",
+
+              {/* CTA */}
+              <Link
+                href="/sign-up"
+                className={cn(
+                  "block w-full py-3 rounded-sm text-xs font-bold tracking-[0.15rem] uppercase font-body transition-colors text-center",
                   plan.popular
-                    ? "bg-accent-primary hover:bg-accent-primary-hover text-bg-primary"
-                    : "bg-bg-surface-2 text-text-primary hover:bg-border-default"
-                )}>
-                  {plan.cta}
-                </Button>
+                    ? "bg-[#e9c176] text-[#1a1400] hover:bg-[#f0d08a]"
+                    : "border border-[#353534] text-[#9a9895] hover:text-[#ededef] hover:border-[#9a9895]/40"
+                )}
+              >
+                {plan.cta}
               </Link>
-            </CardContent>
-          </Card>
-        </motion.div>
-      ))}
-    </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

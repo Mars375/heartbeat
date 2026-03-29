@@ -21,7 +21,7 @@ export default async function SettingsPage() {
                   colorText: "#EDEDEF",
                   colorInputBackground: "#1A1A1D",
                   colorInputText: "#EDEDEF",
-                  colorPrimary: "#10B981",
+                  colorPrimary: "#e9c176",
                 },
               }}
             />
